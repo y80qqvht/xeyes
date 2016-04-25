@@ -1,0 +1,34 @@
+body {
+    background-color: #efefef;
+}
+
+.eyeBlock {
+    width: 690px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #a55a4a; /* まつざきしげるいろ */
+}
+
+.eyeBlock > svg {
+    width: 270px;
+    height: 480px;
+    margin: 30px;
+}
+
+section.equation {
+    position: relative;
+}
+
+section.equation > figure {
+    position: absolute;
+    right: 20px;
+}
+
+section.equation > figure > img {
+    width: 180px;
+    height: 320px;
+}
+
+section.equation > figure > figcaption {
+    text-align: center;
+}

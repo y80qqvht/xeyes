@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <head>
+  <meta charset="UTF-8">
+  <title>XEyes for HTML</title>
+  <link rel="stylesheet" href="./xeyes.css">
+  <script src="./xeyes.js"></script>
+ </head>
+ <body>
+  <header>
+   <h1>XEyes for HTML</h1>
+  </header>
+
+  <section>
+   <h1>SVG と JavaScript で作った XEyes</h1>
+   <p>マウス操作が伴うアプリケーションでは Canvas よりも SVG
+   が優れているらしい。</p>
+   <p>「まつざきしげるいろ」は #a55a4a らしい。</p>
+
+   <p class="eyeBlock">
+    <svg id="LeftEyeSvg">
+     <ellipse class="eye" cx="50%" cy="50%" rx="50%" ry="50%"
+              stroke="none" fill="white" />
+     <ellipse class="iris" cx="50%" cy="50%" rx="20%" ry="20%"
+              stroke="none" fill="black" />
+    </svg>
+    <svg id="RightEyeSvg">
+     <ellipse class="eye" cx="50%" cy="50%" rx="50%" ry="50%"
+              stroke="none" fill="white" />
+     <ellipse class="iris" cx="50%" cy="50%" rx="20%" ry="20%"
+              stroke="none" fill="black" />
+    </svg>
+   </p>
+  </section>
+
+  <section>
+   <h1>設定</h1>
+   <p>
+    <label for="IrisSizeRatioSelector">瞳の大きさ：</label>
+    <select id="IrisSizeRatioSelector" required>
+     <option value="0.1">0.1</option>
+     <option value="0.2">0.2</option>
+     <option value="0.3">0.3</option>
+     <option value="0.4" selected>0.4</option>
+     <option value="0.5">0.5</option>
+     <option value="0.6">0.6</option>
+     <option value="0.7">0.7</option>
+     <option value="0.8">0.8</option>
+     <option value="0.9">0.9</option>
+    </select>
+   </p>
+  </section>
+
+  <section class="equation">
+   <h1>計算式</h1>
+   <figure>
+    <img src="./xeyes.svg" alt="計算式はこの左">
+    <figcaption>計算式はこの左</figcaption>
+   </figure>
+   <div>
+    <dl>
+     <dt>
+      <math display="inline">
+       <mfenced>
+        <msub><mi>x</mi><mn>0</mn></msub>
+        <msub><mi>y</mi><mn>0</mn></msub>
+       </mfenced>
+      </math>
+     </dt>
+     <dd>目の中心から見たマウスカーソルの座標</dd>
+     <dt>
+      <math display="inline">
+       <mfenced>
+        <mi>x</mi>
+        <mi>y</mi>
+       </mfenced>
+      </math>
+     </dt>
+     <dd>目の中心から見た瞳の中心の座標（ellipse の cx, cy に相当）</dd>
+    </dl>
+    <p>
+     <math display="inline">
+      <mrow>
+       <mi>tan</mi>
+       <mo>&#x2061;<!-- &ApplyFunction; --></mo>
+       <mi>&#x03B8;<!-- &theta; --></mi>
+       <mo>=</mo>
+       <mfrac>
+        <msub><mi>y</mi><mn>0</mn></msub>
+        <msub><mi>x</mi><mn>0</mn></msub>
+       </mfrac>
+      </mrow>
+     </math>
+     とおくと、
+    </p>
+    <p>
+     <math display="block">
+      <mrow>
+       <msup><mi>y</mi><mn>2</mn></msup>
+       <mo>=</mo>
+       <msup><mi>x</mi><mn>2</mn></msup>
+       <mo>&#x2062;<!-- &InvisibleTimes; --></mo>
+       <msup><mi>tan</mi><mn>2</mn></msup>
+       <mo>&#x2061;<!-- &ApplyFunction; --></mo>
+       <mi>&#x03B8;<!-- &theta; --></mi>
+      </mrow>
+     </math>
+    </p>
+    <p>
+     楕円の式
+     <math display="inline">
+      <mrow>
+       <mfrac>
+        <msup><mi>x</mi><mn>2</mn></msup>
+        <msup><mi>a</mi><mn>2</mn></msup>
+       </mfrac>
+       <mo>+</mo>
+       <mfrac>
+        <msup><mi>y</mi><mn>2</mn></msup>
+        <msup><mi>b</mi><mn>2</mn></msup>
+       </mfrac>
+       <mo>=</mo>
+       <mn>1</mn>
+      </mrow>
+     </math>
+     に代入して
+     <math display="inline">
+      <mi>x</mi>
+     </math>
+     について解くと、
+    </p>
+    <p>
+     <math display="block">
+      <mrow>
+       <msup><mi>x</mi><mn>2</mn></msup>
+       <mo>=</mo>
+       <mfrac>
+        <mrow>
+         <msup><mi>a</mi><mn>2</mn></msup>
+         <mo>&#x2062;<!-- &InvisibleTimes; --></mo>
+         <msup><mi>b</mi><mn>2</mn></msup>
+        </mrow>
+        <mrow>
+         <msup><mi>a</mi><mn>2</mn></msup>
+         <mo>&#x2062;<!-- &InvisibleTimes; --></mo>
+         <msup><mi>tan</mi><mn>2</mn></msup>
+         <mo>&#x2061;<!-- &ApplyFunction; --></mo>
+         <mi>&#x03B8;<!-- &theta; --></mi>
+         <mo>+</mo>
+         <msup><mi>b</mi><mn>2</mn></msup>
+        </mrow>
+       </mfrac>
+      </mrow>
+     </math>
+    </p>
+    <p>かなり簡単な式で計算できる。意外にも三角関数は全く必要ないっぽい。</p>
+   </div>
+  </section>
+
+  <footer>
+   <p>Copyright © S. A. 2012</p>
+  </footer>
+ </body>
+</html>
