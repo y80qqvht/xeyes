@@ -1,0 +1,40 @@
+﻿<Window x:Class="XEyesWpf.OptionsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Icon="/Resources/XEyes.png"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
+        ResizeMode="NoResize" SizeToContent="WidthAndHeight"
+        FocusManager.FocusedElement="{Binding ElementName=irisSizeRatioSlider}">
+    <Window.Resources>
+        <Style x:Key="MarginStyle" TargetType="FrameworkElement">
+            <Setter Property="Margin" Value="5" />
+        </Style>
+    </Window.Resources>
+    <StackPanel Orientation="Vertical">
+        <GroupBox Style="{StaticResource MarginStyle}" Header="瞳の大きさ(_I)">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                
+                <Slider Name="irisSizeRatioSlider" Grid.Column="0"
+                        Style="{StaticResource MarginStyle}"
+                        Orientation="Horizontal"
+                        Minimum="0.1" Maximum="0.9"
+                        Value="{Binding IrisSizeRatio, Mode=TwoWay}"
+                        SmallChange="0.05" LargeChange="0.1"
+                        TickPlacement="Both" TickFrequency="0.1" />
+                <TextBlock Grid.Column="1"
+                           VerticalAlignment="Center"
+                           Text="{Binding IrisSizeRatio, Mode=OneWay, StringFormat={}{0:f2}}" />
+            </Grid>
+        </GroupBox>
+        <CheckBox Style="{StaticResource MarginStyle}"
+                  Content="終了時に設定をファイルへ保存(_S)"
+                  IsChecked="{Binding SaveOnExit, Mode=TwoWay}" />
+        <Button Style="{StaticResource MarginStyle}"
+                Padding="30, 0" HorizontalAlignment="Right"
+                Content="OK" IsDefault="True" IsCancel="True" Click="OkButton_Click" />
+    </StackPanel>
+</Window>

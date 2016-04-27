@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="XEyesWpf.EyeControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:XEyesWpf"
+             mc:Ignorable="d"
+             d:DesignHeight="160" d:DesignWidth="90">
+    <Canvas Name="canvas">
+        <Canvas.DataContext>
+            <local:EyeControlModel />
+        </Canvas.DataContext>
+        <Ellipse Fill="White"
+                 Width="{Binding EyeWidth, Mode=OneWay}"
+                 Height="{Binding EyeHeight, Mode=OneWay}" />
+        <Ellipse Fill="Black"
+                 Width="{Binding IrisWidth, Mode=OneWay}"
+                 Height="{Binding IrisHeight, Mode=OneWay}"
+                 Canvas.Left="{Binding IrisX, Mode=OneWay}"
+                 Canvas.Top="{Binding IrisY, Mode=OneWay}" />
+    </Canvas>
+</UserControl>
